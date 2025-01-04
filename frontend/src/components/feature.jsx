@@ -27,7 +27,7 @@ const FeatureContainer = styled.div`
   text-align: left;
   gap: 1rem;
 
-  /* Media queries para responsive design */
+  /* Responsive design */
   @media (max-width: 768px) {
     width: 100%;
     height: max-content;

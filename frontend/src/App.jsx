@@ -5,8 +5,6 @@ import { FaHotel } from "react-icons/fa6";
 import { MdWorkspacePremium } from "react-icons/md";
 import { RiLandscapeAiFill } from "react-icons/ri";
 
-
-
 function App() {
   return (
     <LandingPageContainer>
@@ -14,7 +12,7 @@ function App() {
         <Menu />
         <LogoContainer>
           <PageTitle>
-            Aventura{" "}
+            Aventura
             <span>
               Trek<p>&reg;</p>
             </span>
@@ -26,9 +24,18 @@ function App() {
           </PageDescription>
         </LogoContainer>
         <WrapperFeatures>
-          <Feature icon={<FaHotel/>} text="Nuestros paquetes incluyen alojamiento, comidas y equipo de alta calidad para que disfrutes al máximo de la experiencia.  ¡Descubrí la magia!" />
-          <Feature icon={<MdWorkspacePremium />} text="Nuestros guías certificados te brindarán la seguridad y la instrucción necesaria para que vivas una experiencia inolvidable.  ¡Preparate!" />
-          <Feature icon={<RiLandscapeAiFill />} text="Organizamos viajes a comunidades indígenas en la Amazonía peruana, donde podrás compartir y aprender sobre sus tradiciones." />
+          <Feature
+            icon={<FaHotel />}
+            text="Nuestros paquetes incluyen alojamiento, comidas y equipo de alta calidad para que disfrutes al máximo de la experiencia.  ¡Descubrí la magia!"
+          />
+          <Feature
+            icon={<MdWorkspacePremium />}
+            text="Nuestros guías certificados te brindarán la seguridad y la instrucción necesaria para que vivas una experiencia inolvidable.  ¡Preparate!"
+          />
+          <Feature
+            icon={<RiLandscapeAiFill />}
+            text="Organizamos viajes a comunidades indígenas en la Amazonía peruana, donde podrás compartir y aprender sobre sus tradiciones."
+          />
         </WrapperFeatures>
       </MainContent>
     </LandingPageContainer>
@@ -38,7 +45,7 @@ function App() {
 export default App;
 
 const LandingPageContainer = styled.div`
-  background-image: url("../public/image-background.svg");
+  background-image: url("../public/background-img.png");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -58,7 +65,7 @@ const MainContent = styled.main`
   padding: 2rem 0;
   width: 70%;
 
-  /* Media queries para responsive design */
+  /* Responsive design */
   @media (max-width: 768px) {
     width: 90%;
     padding: 1rem 0;
@@ -80,9 +87,11 @@ const LogoContainer = styled.div`
   gap: 1rem;
   width: 46rem;
 
-  /* Media queries para responsive design */
+  /* Responsive design */
   @media (max-width: 768px) {
     width: 100%;
+    align-items: center;
+    text-align: start;
     gap: 0.5rem;
   }
 `;
@@ -96,24 +105,27 @@ const PageTitle = styled.h1`
   user-select: none;
   margin: 0;
 
-  /* Media queries para responsive design */
+  /* Responsive design */
   @media (max-width: 768px) {
     display: flex;
     flex-wrap: wrap;
-    font-size: 3rem;
+    justify-content: center;
+    font-size: 3.5rem;
   }
 
   span {
     display: flex;
     flex-direction: row;
     color: #ec7505;
+
     &::before {
-      content: ""; // Contenido vacío para crear el espacio
+      content: "";
       display: inline-block;
       width: 1.5rem;
       height: 100%;
       text-decoration: none;
     }
+
     p {
       font-family: "Inter", serif;
       font-size: 2.5rem;
@@ -122,7 +134,7 @@ const PageTitle = styled.h1`
       padding-left: 0.5rem;
       margin: 0;
 
-      /* Media queries para responsive design */
+      /* Responsive design */
       @media (max-width: 768px) {
         font-size: 1.5rem;
       }
@@ -140,7 +152,7 @@ const PageDescription = styled.p`
   margin: 0;
   width: 100%;
 
-  /* Media queries para responsive design */
+  /* Responsive design */
   @media (max-width: 768px) {
     width: 100%;
     font-size: 1.3rem;
@@ -153,7 +165,7 @@ const WrapperFeatures = styled.div`
   justify-content: space-evenly;
   margin-bottom: 5rem;
 
-  /* Media queries para responsive design */
+  /* Responsive design */
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
