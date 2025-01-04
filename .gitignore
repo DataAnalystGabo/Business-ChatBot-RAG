@@ -27,3 +27,6 @@ public
 # Backend
 __pycache__/
 .venv/
+
+# Prettier
+.prettierrc
