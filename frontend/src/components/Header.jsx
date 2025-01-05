@@ -1,8 +1,9 @@
-import { useState } from "react";
 import styled from "styled-components";
+import { useState } from "react";
 import { CgMenuGridO } from "react-icons/cg";
+import BrandName from "./brandname";
 
-const Menu = () => {
+const Header = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const toggleMenu = () => {
@@ -11,12 +12,13 @@ const Menu = () => {
 
   return (
     <Nav>
-      <h3>
-        Aventura
-        <span>
-          Trek<p>&reg;</p>
-        </span>
-      </h3>
+      <BrandName
+        fontSizeH3="1.6rem"
+        spanColor="#f7f5fb"
+        fontOpacity="0.8"
+        fontSizeP="1rem"
+        displayRD="none"
+      />
       <CgMenuGridO className="icon__menu" onClick={toggleMenu} />
       <ul className={menuVisible ? "visible" : ""}>
         <li>
@@ -39,7 +41,7 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default Header;
 
 const Nav = styled.nav`
   width: 100%;
@@ -48,44 +50,6 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   align-self: flex-end;
-
-  h3 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-family: "Montserrat Subrayada", serif;
-    font-size: 1.6rem;
-    opacity: 0.8;
-    user-select: none;
-
-    span {
-      display: flex;
-      flex-direction: row;
-      color: #f7f5fb;
-
-      &::before {
-        content: ""; // Contenido vacío para crear el espacio
-        display: inline-block;
-        width: 0.6rem;
-        height: 100%;
-        text-decoration: none;
-      }
-
-      p {
-        font-family: "Inter", serif;
-        font-size: 1rem;
-        font-weight: 200;
-        color: #f7f5fb;
-        padding-left: 0.5rem;
-        margin: 0;
-      }
-    }
-
-    /* Media queries para responsive design */
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
 
   ul {
     display: flex;

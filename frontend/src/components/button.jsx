@@ -18,12 +18,6 @@ const StyledWrapper = styled.div`
     padding: 0;
     margin: 0;
     cursor: pointer;
-    font-family: "Inter", serif;
-    font-optical-sizing: auto;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.3;
   }
 
   .menu__button {

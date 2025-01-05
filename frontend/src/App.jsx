@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Menu from "./components/menu";
-import Feature from "./components/feature";
+import Header from "./components/Header";
+import BrandName from "./components/brandname";
+import Feature from "./components/Feature";
 import { FaHotel } from "react-icons/fa6";
 import { MdWorkspacePremium } from "react-icons/md";
 import { RiLandscapeAiFill } from "react-icons/ri";
@@ -9,14 +10,17 @@ function App() {
   return (
     <LandingPageContainer>
       <MainContent>
-        <Menu />
+        <Header />
         <LogoContainer>
-          <PageTitle>
-            Aventura
-            <span>
-              Trek<p>&reg;</p>
-            </span>
-          </PageTitle>
+          <BrandName
+            fontSizeH3="5rem"
+            spanColor="#ec7505"
+            fontSizeP="2.5rem"
+            displayRD="flex"
+            fontSizeH3RD="3.5rem"
+            flexWrapRD="wrap"
+            spaceBetweenWords="2rem"
+          />
           <PageDescription>
             Vive la aventura de tu vida con <strong>Aventura Trek</strong>.
             Explora paisajes impresionantes, descubre culturas fascinantes y
@@ -93,52 +97,6 @@ const LogoContainer = styled.div`
     align-items: center;
     text-align: start;
     gap: 0.5rem;
-  }
-`;
-
-const PageTitle = styled.h1`
-  display: flex;
-  font-family: "Montserrat Subrayada", serif;
-  font-size: 5rem;
-  font-style: normal;
-  font-weight: 700;
-  user-select: none;
-  margin: 0;
-
-  /* Responsive design */
-  @media (max-width: 768px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 3.5rem;
-  }
-
-  span {
-    display: flex;
-    flex-direction: row;
-    color: #ec7505;
-
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 1.5rem;
-      height: 100%;
-      text-decoration: none;
-    }
-
-    p {
-      font-family: "Inter", serif;
-      font-size: 2.5rem;
-      font-weight: 200;
-      color: #f7f5fb;
-      padding-left: 0.5rem;
-      margin: 0;
-
-      /* Responsive design */
-      @media (max-width: 768px) {
-        font-size: 1.5rem;
-      }
-    }
   }
 `;
 
