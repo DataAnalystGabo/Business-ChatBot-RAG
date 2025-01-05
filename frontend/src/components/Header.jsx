@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
+import BrandName from "./BrandName";
 import { CgMenuGridO } from "react-icons/cg";
-import BrandName from "./brandname";
 
 const Header = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -17,7 +17,7 @@ const Header = () => {
         spanColor="#f7f5fb"
         fontOpacity="0.8"
         fontSizeP="1rem"
-        displayRD="none"
+        displayRd="none"
       />
       <CgMenuGridO className="icon__menu" onClick={toggleMenu} />
       <ul className={menuVisible ? "visible" : ""}>
@@ -40,8 +40,6 @@ const Header = () => {
     </Nav>
   );
 };
-
-export default Header;
 
 const Nav = styled.nav`
   width: 100%;
@@ -134,3 +132,5 @@ const Nav = styled.nav`
     }
   }
 `;
+
+export default Header;

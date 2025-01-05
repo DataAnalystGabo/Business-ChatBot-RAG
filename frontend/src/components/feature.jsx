@@ -11,8 +11,6 @@ const Feature = ({ icon, text }) => {
   );
 };
 
-export default Feature;
-
 const FeatureContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,3 +48,5 @@ const IconWrapper = styled.div`
     opacity: 0.8;
   }
 `;
+
+export default Feature;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "./components/Header";
-import BrandName from "./components/brandname";
-import Feature from "./components/Feature";
+import BrandName from "./components/BrandName";
+import Feature from "./components/feature";
 import { FaHotel } from "react-icons/fa6";
 import { MdWorkspacePremium } from "react-icons/md";
 import { RiLandscapeAiFill } from "react-icons/ri";
@@ -16,9 +16,9 @@ function App() {
             fontSizeH3="5rem"
             spanColor="#ec7505"
             fontSizeP="2.5rem"
-            displayRD="flex"
-            fontSizeH3RD="3.5rem"
-            flexWrapRD="wrap"
+            displayRd="flex"
+            fontSizeH3Rd="3.5rem"
+            flexWrapRd="wrap"
             spaceBetweenWords="2rem"
           />
           <PageDescription>
