@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import BrandName from "./components/BrandName";
 import Feature from "./components/feature";
+import ButtonStarAi from "./components/chat/ButtonStarAI";
 import { FaHotel } from "react-icons/fa6";
 import { MdWorkspacePremium } from "react-icons/md";
 import { RiLandscapeAiFill } from "react-icons/ri";
@@ -27,6 +28,7 @@ function App() {
             crea recuerdos que durarán para siempre.
           </PageDescription>
         </LogoContainer>
+        <ButtonStarAi />
         <WrapperFeatures>
           <Feature
             icon={<FaHotel />}

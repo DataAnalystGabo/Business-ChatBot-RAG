@@ -1,0 +1,96 @@
+/* styles.css */
+.star-main {
+  animation: scaleMainAnimation 2s ease-in-out infinite alternate;
+  z-index: 2;
+}
+
+.star-main path {
+  animation: colorTransition 6s ease-in-out infinite alternate;
+}
+
+.button-container::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  left: 14%;
+  top: 27%;
+  animation: expandAndFade 4s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .button-container::before {
+    left: 16%;
+  }
+}
+
+@keyframes expandAndFade {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.star-satellite-1 {
+  position: relative;
+  top: -0.5rem;
+  left: -1rem;
+  animation: scaleSatelliteAnimation 1.5s ease-in-out infinite alternate;
+}
+
+.star-satellite-1 path {
+  animation: colorTransition 6s ease-in-out infinite alternate;
+}
+
+.star-satellite-2 {
+  position: relative;
+  bottom: -0.5rem;
+  left: -1rem;
+  animation: scaleSatelliteAnimation 1.5s 1s ease-in-out infinite alternate;
+}
+
+.star-satellite-2 path {
+  animation: colorTransition 6s ease-in-out infinite alternate;
+}
+
+@keyframes scaleMainAnimation {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleSatelliteAnimation {
+  0% {
+    transform: scale(0.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes colorTransition {
+  0% {
+    fill: #c6ffdd;
+  }
+  50% {
+    fill: #fbd786;
+  }
+  100% {
+    fill: #f7797d;
+  }
+}
