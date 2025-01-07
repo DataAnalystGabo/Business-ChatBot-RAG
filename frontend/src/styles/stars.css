@@ -1,11 +1,67 @@
-/* styles.css */
 .star-main {
   animation: scaleMainAnimation 2s ease-in-out infinite alternate;
   z-index: 2;
+  transition: transform 0.3s ease-in-out;
 }
 
+/* Efectos de rotación para la función setOpen de la estrella principal del botón */
+@keyframes rotateStarOpen {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes rotateStarClose {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Efecto de escalado para la estrella principal del botón */
+@keyframes scaleMainAnimation {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.star-main.rotate-open {
+  animation: rotateStarOpen 1s ease-in-out forwards;
+}
+
+.star-main.rotate-close {
+  animation: rotateStarClose 1s ease-in-out forwards;
+}
+/*=================================================================*/
+
+/* Efecto de transición de colores para la estrella principal del botón */
 .star-main path {
   animation: colorTransition 6s ease-in-out infinite alternate;
+}
+/*=================================================================*/
+
+/* Efecto de aro desplazandose detrás de la estrella principal del botón */
+@keyframes expandAndFade {
+  0% {
+    transform: scale(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
 }
 
 .button-container::before {
@@ -15,31 +71,28 @@
   width: 20px;
   height: 20px;
   background-color: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   left: 14%;
   top: 27%;
   animation: expandAndFade 4s linear infinite;
 }
 
+/* Alineación del aro y la estrella principal para pantallas chicas */
 @media (max-width: 768px) {
   .button-container::before {
     left: 16%;
   }
 }
+/*=================================================================*/
 
-@keyframes expandAndFade {
+/* Transiciones para las estrellas secundarias */
+@keyframes scaleSatelliteAnimation {
   0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(2);
-    opacity: 0.5;
+    transform: scale(0.4);
   }
   100% {
-    transform: scale(3);
-    opacity: 0;
+    transform: scale(1);
   }
 }
 
@@ -64,25 +117,9 @@
 .star-satellite-2 path {
   animation: colorTransition 6s ease-in-out infinite alternate;
 }
+/*=================================================================*/
 
-@keyframes scaleMainAnimation {
-  0% {
-    transform: scale(0.8);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes scaleSatelliteAnimation {
-  0% {
-    transform: scale(0.4);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
+/* Transiciones de colores para todas las estrellas del botón */
 @keyframes colorTransition {
   0% {
     fill: #c6ffdd;
@@ -94,3 +131,4 @@
     fill: #f7797d;
   }
 }
+/*=================================================================*/
