@@ -3,52 +3,74 @@ import Header from "./components/Header";
 import BrandName from "./components/BrandName";
 import Feature from "./components/feature";
 import ButtonStarAi from "./components/chat/ButtonStarAI";
+import ChatWindow from "./components/chat/ChatWindow";
 import { FaHotel } from "react-icons/fa6";
 import { MdWorkspacePremium } from "react-icons/md";
 import { RiLandscapeAiFill } from "react-icons/ri";
+import { useState } from "react";
 
 function App() {
+  const [openChat, setOpenChat] = useState(false);
+
+  const toggleChatWindow = () => {
+    setOpenChat(!openChat);
+  };
+
   return (
     <LandingPageContainer>
-      <MainContent>
-        <Header />
-        <LogoContainer>
-          <BrandName
-            fontSizeH3="5rem"
-            spanColor="#ec7505"
-            fontSizeP="2.5rem"
-            displayRd="flex"
-            fontSizeH3Rd="3.5rem"
-            flexWrapRd="wrap"
-            spaceBetweenWords="2rem"
-          />
-          <PageDescription>
-            Vive la aventura de tu vida con <strong>Aventura Trek</strong>.
-            Explora paisajes impresionantes, descubre culturas fascinantes y
-            crea recuerdos que durarán para siempre.
-          </PageDescription>
-        </LogoContainer>
-        <ButtonStarAi />
-        <WrapperFeatures>
-          <Feature
-            icon={<FaHotel />}
-            text="Nuestros paquetes incluyen alojamiento, comidas y equipo de alta calidad para que disfrutes al máximo de la experiencia.  ¡Descubrí la magia!"
-          />
-          <Feature
-            icon={<MdWorkspacePremium />}
-            text="Nuestros guías certificados te brindarán la seguridad y la instrucción necesaria para que vivas una experiencia inolvidable.  ¡Preparate!"
-          />
-          <Feature
-            icon={<RiLandscapeAiFill />}
-            text="Organizamos viajes a comunidades indígenas en la Amazonía peruana, donde podrás compartir y aprender sobre sus tradiciones."
-          />
-        </WrapperFeatures>
-      </MainContent>
+      <AppContent className="AppContent" openChat={openChat}>
+        <MainContent openChat={openChat}>
+          <Header />
+          <LogoContainer>
+            <BrandName
+              fontSizeH3="5rem"
+              spanColor="#ec7505"
+              fontSizeP="2.5rem"
+              displayRd="flex"
+              fontSizeH3Rd="3.5rem"
+              flexWrapRd="wrap"
+              spaceBetweenWords="2rem"
+            />
+            <PageDescription>
+              Vive la aventura de tu vida con <strong>Aventura Trek</strong>.
+              Explora paisajes impresionantes, descubre culturas fascinantes y
+              crea recuerdos que durarán para siempre.
+            </PageDescription>
+          </LogoContainer>
+          <ButtonStarAi openChat={toggleChatWindow} />
+          <WrapperFeatures>
+            <Feature
+              icon={<FaHotel />}
+              text="Nuestros paquetes incluyen alojamiento, comidas y equipo de alta calidad para que disfrutes al máximo de la experiencia.  ¡Descubrí la magia!"
+            />
+            <Feature
+              icon={<MdWorkspacePremium />}
+              text="Nuestros guías certificados te brindarán la seguridad y la instrucción necesaria para que vivas una experiencia inolvidable.  ¡Preparate!"
+            />
+            <Feature
+              icon={<RiLandscapeAiFill />}
+              text="Organizamos viajes a comunidades indígenas en la Amazonía peruana, donde podrás compartir y aprender sobre sus tradiciones."
+            />
+          </WrapperFeatures>
+        </MainContent>
+        <ChatWindow isOpen={openChat} />
+      </AppContent>
     </LandingPageContainer>
   );
 }
 
 export default App;
+
+const AppContent = styled.div`
+  height: 100vh;
+  display: grid;
+  grid-template-columns: ${({ openChat }) =>
+    openChat ? "70% 30%" : "100% 0%"};
+  grid-template-areas: ${({ openChat }) =>
+    openChat ? '"main chat"' : '"main"'};
+  grid-template-rows: 100vh;
+  transition: grid-template-columns 0.3s ease-in-out;
+`;
 
 const LandingPageContainer = styled.div`
   background-image: url("../public/background-img.png");
@@ -62,14 +84,16 @@ const LandingPageContainer = styled.div`
 `;
 
 const MainContent = styled.main`
-  color: #f7f5fb;
+  width: ${({ openChat }) => (openChat ? "90%" : "70%")};
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   margin: 0 auto;
   padding: 2rem 0;
-  width: 70%;
+  color: #f7f5fb;
+  grid-area: main;
+  transition: width 0.3s ease-in-out;
 
   /* Responsive design */
   @media (max-width: 768px) {
@@ -120,10 +144,11 @@ const PageDescription = styled.p`
 `;
 
 const WrapperFeatures = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  margin-bottom: 5rem;
+  justify-content: space-between;
+  margin-bottom: 7rem;
 
   /* Responsive design */
   @media (max-width: 768px) {

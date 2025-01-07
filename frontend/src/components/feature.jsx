@@ -14,6 +14,7 @@ const Feature = ({ icon, text }) => {
 const FeatureContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: 22rem;
   font-family: "Inter", serif;
@@ -41,7 +42,6 @@ const FeatureContainer = styled.div`
 const IconWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  *align-items: center;
   svg {
     color: #f7f5fb;
     font-size: 5rem;

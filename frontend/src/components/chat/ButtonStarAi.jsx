@@ -3,18 +3,16 @@ import { useState } from "react";
 import StarIcon from "../../assets/icons/StarIcon";
 import "../../styles/stars.css";
 
-const ButtonStarAi = () => {
-  const [open, setOpen] = useState(false);
+const ButtonStarAi = ({ openChat }) => {
   const [rotate, setRotate] = useState(false);
 
-  const openChat = () => {
-    setOpen(!open);
+  const rotateButton = () => {
     setRotate(!rotate);
-    console.log(open);
+    openChat();
   };
 
   return (
-    <ButtonContainer className="button-container" onClick={openChat}>
+    <ButtonContainer className="button-container" onClick={rotateButton}>
       <StarIcon
         width={50}
         height={50}
@@ -32,11 +30,10 @@ const ButtonContainer = styled.div`
   width: max-content;
   height: max-content;
   display: flex;
-  position: relative;
-  bottom: -45vh;
-  right: -65vw;
+  position: absolute;
+  bottom: 3rem;
+  right: 0;
   cursor: pointer;
-  *border: 1px solid white;
 
   @media (max-width: 768px) {
     position: fixed;
