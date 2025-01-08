@@ -70,6 +70,11 @@ const AppContent = styled.div`
     openChat ? '"main chat"' : '"main"'};
   grid-template-rows: 100vh;
   transition: grid-template-columns 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    grid-template-columns: ${({ openChat }) =>
+      openChat ? "0% 100%" : "100%  0%"};
+  }
 `;
 
 const LandingPageContainer = styled.div`
