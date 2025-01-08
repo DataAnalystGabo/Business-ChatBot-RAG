@@ -18,8 +18,8 @@ function App() {
 
   return (
     <LandingPageContainer>
-      <AppContent className="AppContent" openChat={openChat}>
-        <MainContent openChat={openChat}>
+      <AppContent $openChat={openChat}>
+        <MainContent $openChat={openChat}>
           <Header />
           <LogoContainer>
             <BrandName
@@ -64,16 +64,16 @@ export default App;
 const AppContent = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-columns: ${({ openChat }) =>
-    openChat ? "70% 30%" : "100% 0%"};
-  grid-template-areas: ${({ openChat }) =>
-    openChat ? '"main chat"' : '"main"'};
+  grid-template-columns: ${({ $openChat }) =>
+    $openChat ? "70% 30%" : "100% 0%"};
+  grid-template-areas: ${({ $openChat }) =>
+    $openChat ? '"main chat"' : '"main"'};
   grid-template-rows: 100vh;
   transition: grid-template-columns 0.3s ease-in-out;
 
   @media (max-width: 768px) {
-    grid-template-columns: ${({ openChat }) =>
-      openChat ? "0% 100%" : "100%  0%"};
+    grid-template-columns: ${({ $openChat }) =>
+      $openChat ? "0% 100%" : "100%  0%"};
   }
 `;
 
@@ -89,7 +89,7 @@ const LandingPageContainer = styled.div`
 `;
 
 const MainContent = styled.main`
-  width: ${({ openChat }) => (openChat ? "90%" : "70%")};
+  width: ${({ $openChat }) => ($openChat ? "90%" : "70%")};
   display: flex;
   position: relative;
   flex-direction: column;
