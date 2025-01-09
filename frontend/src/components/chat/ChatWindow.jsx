@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import ChatInput from "@chat/ChatInput";
 import ChatMessageUser from "@chat/ChatMessageUser";
@@ -6,6 +6,7 @@ import ChatMessageIA from "@chat/ChatMessageIA";
 
 const ChatWindow = ({ isOpen }) => {
   const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null); /* Referencia al componente Messages */
 
   /* 
   Función recibe y almacena los mensajes del usuario.
@@ -39,13 +40,20 @@ const ChatWindow = ({ isOpen }) => {
     }
   };
 
+  // Desplaza el chat hacia abajo cuando se actualiza la lista de mensajes
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   return (
     <Container $isOpen={isOpen}>
       <Header>
         <p>Trek IA</p>
         <span></span>
       </Header>
-      <Messages>
+      <Messages ref={messagesEndRef}>
         {/* ... (mensajes del usuario) ... */}
         {messages.map((message, index) =>
           message.sender === "user" ? (

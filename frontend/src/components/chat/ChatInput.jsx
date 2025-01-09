@@ -16,6 +16,12 @@ const ChatInput = ({ setMessagesUser }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      dispatchTextUser();
+    }
+  };
+
   return (
     <Container>
       <Input
@@ -23,6 +29,7 @@ const ChatInput = ({ setMessagesUser }) => {
         placeholder="Preguntale a Trek IA ..."
         value={textUser}
         onChange={catchTextUser}
+        onKeyDown={handleKeyDown}
       />
       <SendButton onClick={dispatchTextUser}>
         <IoIosSend />
