@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import StarIcon from "../../assets/icons/StarIcon";
-import "../../styles/stars.css";
+import StarIcon from "@icons/StarIcon";
+import "@styles/stars.css";
 
 const ButtonStarAi = ({ openChat }) => {
   const [rotate, setRotate] = useState(false);

@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { useState } from "react";
-import BrandName from "./BrandName";
+import styled from "styled-components";
+import BrandName from "@components/BrandName";
 import { CgMenuGridO } from "react-icons/cg";
 
 const Header = () => {

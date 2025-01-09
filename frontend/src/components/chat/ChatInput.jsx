@@ -2,19 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { IoIosSend } from "react-icons/io";
 
-const ChatInput = ({ setMessageUser }) => {
-  /*
-  Componente que maneja la entrada de texto del usuario y el envío del mensaje al componente padre.
-
-  Lógica:
-  1. Se declaran las variables y la función de actualización (textUser, setTextUser).
-  2. catchTextUser: se encarga de capturar el evento onChange y setear la variable textUser.
-  3. dispatchTextUser: 
-    - Se ejecuta al hacer clic en el botón de enviar.
-    - Verifica que el mensaje no se encuentre vacío.
-    - Llama a la función setMessageUser (recibida como prop) que actualiza el estado 'messageUser' en el componente ChatWindow.jsx.
-  4. dispatchTextUser limpia el input.
-*/
+const ChatInput = ({ setMessagesUser }) => {
   const [textUser, setTextUser] = useState("");
 
   const catchTextUser = (e) => {
@@ -23,7 +11,7 @@ const ChatInput = ({ setMessageUser }) => {
 
   const dispatchTextUser = () => {
     if (textUser.trim() !== "") {
-      setMessageUser(textUser);
+      setMessagesUser(textUser);
       setTextUser("");
     }
   };

@@ -1,13 +1,13 @@
+import { useState } from "react";
 import styled from "styled-components";
-import Header from "./components/Header";
-import BrandName from "./components/BrandName";
-import Feature from "./components/feature";
-import ButtonStarAi from "./components/chat/ButtonStarAI";
-import ChatWindow from "./components/chat/ChatWindow";
+import Header from "@components/Header";
+import BrandName from "@components/BrandName";
+import Feature from "@components/Feature";
+import ButtonStarAi from "@chat/ButtonStarAI";
+import ChatWindow from "@chat/ChatWindow";
 import { FaHotel } from "react-icons/fa6";
 import { MdWorkspacePremium } from "react-icons/md";
 import { RiLandscapeAiFill } from "react-icons/ri";
-import { useState } from "react";
 
 function App() {
   const [openChat, setOpenChat] = useState(false);

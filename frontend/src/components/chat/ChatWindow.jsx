@@ -1,25 +1,42 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import ChatInput from "./ChatInput";
-import ChatMessageUser from "./ChatMessageUser";
+import ChatInput from "@chat/ChatInput";
+import ChatMessageUser from "@chat/ChatMessageUser";
+import ChatMessageIA from "@chat/ChatMessageIA";
 
 const ChatWindow = ({ isOpen }) => {
-  /*
-  Componente que muestra la ventana del chat y maneja la visualización de los mensajes del usuario.
+  const [messages, setMessages] = useState([]);
 
-  Lógica:
-  1. Se declara el estado 'messageUser' para almacenar el mensaje del usuario recibido del componente ChatInput.
-  2. receiveMessageUser: 
-    - Recibe el mensaje enviado por el usuario desde el componente ChatInput.
-    - Actualiza el estado 'messageUser' con el nuevo mensaje.
-  3. Se renderiza el componente ChatMessageUser, pasándole el estado 'messageUser' como prop para que lo muestre en pantalla.
-  4. Se renderiza el componente ChatInput, pasándole la función receiveMessageUser como prop 'setMessageUser'.  Esto permite que ChatInput envíe el mensaje a este componente.
+  /* 
+  Función recibe y almacena los mensajes del usuario.
+  Además realiza la petición a la API y maneja la respuesta.
   */
+  const receiveMessage = async (newMessage) => {
+    setMessages([...messages, { sender: "user", text: newMessage }]);
 
-  const [messageUser, setMessageUser] = useState("");
+    try {
+      const response = await fetch("http://localhost:8000", {
+        method: "POST", // Método POST para enviar datos
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: newMessage }), // Envía el mensaje en el cuerpo de la solicitud
+      });
 
-  const receiveMessageUser = (newMessageUser) => {
-    setMessageUser(newMessageUser);
+      if (!response.ok) {
+        throw new Error("Error en la solicitud a la API");
+      }
+
+      const data = await response.json();
+      setMessages([
+        ...messages,
+        { sender: "user", text: newMessage },
+        { sender: "chatbot-ia", text: data.message },
+      ]); // Agrega la respuesta de la API al estado
+    } catch (error) {
+      console.error("Error al obtener respuesta de la IA:", error);
+      // Manejo de errores, por ejemplo, mostrar un mensaje al usuario
+    }
   };
 
   return (
@@ -29,9 +46,16 @@ const ChatWindow = ({ isOpen }) => {
         <span></span>
       </Header>
       <Messages>
-        <ChatMessageUser messageUser={messageUser} />
+        {/* ... (mensajes del usuario) ... */}
+        {messages.map((message, index) =>
+          message.sender === "user" ? (
+            <ChatMessageUser key={index} message={message.text} />
+          ) : (
+            <ChatMessageIA key={index} message={message.text} />
+          )
+        )}
       </Messages>
-      <ChatInput setMessageUser={receiveMessageUser} />
+      <ChatInput setMessagesUser={receiveMessage} />
     </Container>
   );
 };
@@ -75,7 +99,7 @@ const Header = styled.div`
     width: 0.5rem;
     background-color: #00ff88;
     border-radius: 50%;
-    animation: scaleDotGreen 3s ease-in-out infinite;
+    animation: scaleDotGreen 2s ease-in-out infinite;
   }
 
   @keyframes scaleDotGreen {
@@ -96,4 +120,11 @@ const Messages = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox */
+
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari y Opera */
+  }
 `;
